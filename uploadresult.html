@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Grading Result</h2>
+  <div class="card">
+    <p>Student: <strong>{{ submission.username }}</strong></p>
+    <p>Score: <strong>{{ submission.score }}/{{ submission.total }}</strong></p>
+    <p><a href="/uploads/{{ submission.filename }}" target="_blank">View uploaded image</a></p>
+    <p><a href="/student">Back to dashboard</a></p>
+  </div>
+{% endblock %}
