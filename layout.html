@@ -1,0 +1,40 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>E-Assessment</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>E-Assessment Demo</h1>
+      <nav>
+        <a href="/">Home</a>
+        {% if session.get('role') == 'student' %}
+          <a href="/student">Student</a>
+        {% elif session.get('role') == 'teacher' %}
+          <a href="/teacher">Teacher</a>
+        {% endif %}
+        {% if session.get('username') %}
+          <span class="muted">Signed in as {{ session.get('username') }} ({{ session.get('role') }})</span>
+          <a href="/logout">Logout</a>
+        {% endif %}
+      </nav>
+    </header>
+    <main>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class="flashes">
+            {% for m in messages %}<li>{{ m }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+    </main>
+    <footer>
+      <small>Demo e-assessment — simulated scoring from uploaded images.</small>
+    </footer>
+  </body>
+</html>
