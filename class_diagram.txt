@@ -1,0 +1,12 @@
+User
+- username
+- role
+- email
++ is_student()
++ is_teacher()
+
+Submission
+- filename
+- score
+- total
+- timestamp
