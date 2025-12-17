@@ -1,0 +1,3 @@
+Model: data.json, User, Submission
+View: HTML + CSS
+Controller: Flask routes (app.py)
