@@ -1,33 +1,17 @@
-
 {% extends "layout.html" %}
 {% block content %}
-  <h2>Teacher Dashboard</h2>
-  <section class="card">
-    <h3>Set Answer Key</h3>
-    <form method="post" action="/set_key">
-      <label>Total Questions<br><input name="total_questions" type="number" min="1" value="{{ answer_key.total_questions }}" required /></label>
-      <button type="submit">Save</button>
-    </form>
-  </section>
+<h2>Teacher Dashboard</h2>
 
-  <section class="card">
-    <h3>All Submissions</h3>
-    {% if submissions %}
-      <table>
-        <thead><tr><th>Student</th><th>Score</th><th>Image</th><th>Time</th></tr></thead>
-        <tbody>
-          {% for s in submissions %}
-            <tr>
-              <td>{{ s.username }}</td>
-              <td>{{ s.score }}/{{ s.total }}</td>
-              <td><a href="/uploads/{{ s.filename }}" target="_blank">View</a></td>
-              <td class="muted">{{ s.timestamp }}</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    {% else %}
-      <p>No submissions yet.</p>
-    {% endif %}
-  </section>
+<form method="POST">
+  Total Questions:
+  <input type="number" name="total" value="10">
+  <button type="submit">Update</button>
+</form>
+
+<ul>
+{% for s in submissions %}
+  <li>{{ s.username }} → {{ s.score }}/{{ s.total }}</li>
+{% endfor %}
+</ul>
 {% endblock %}
+
